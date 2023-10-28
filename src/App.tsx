@@ -11,7 +11,7 @@ const { WebXPanel, isActive, WebXPanelConfigParams, WebXPanelEvents } = getWebXP
 
 // If the project is running in a browser the XPanel should initialize
 if (isActive) {
-  WebXPanelConfigParams.host = "192.168.1.223";
+  WebXPanelConfigParams.host = "1.1.1.1";
   WebXPanelConfigParams.ipId = "0x03";
 
   console.log("Initializing XPanel with config: " + JSON.stringify(WebXPanelConfigParams));
