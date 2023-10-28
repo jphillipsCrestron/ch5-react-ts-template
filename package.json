@@ -1,0 +1,37 @@
+{
+  "name": "ch5-react-ts-template",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "archive": "ch5-cli archive -p ch5-react-ts-template -d dist -o archive",
+    "upload:xpanel": "ch5-cli deploy -p -H 1.1.1.1 -t web archive/ch5-react-ts-template.ch5z",
+    "upload:panel": "ch5-cli deploy -p -H 1.1.1.1 -t touchscreen archive/ch5-react-ts-template.ch5z --slow-mode",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@crestron/ch5-crcomlib": "^2.6.1",
+    "@crestron/ch5-webxpanel": "^2.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@crestron/ch5-shell-utilities-cli": "^2.6.1",
+    "@crestron/ch5-utilities-cli": "^2.0.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "patch-package": "^8.0.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+}
