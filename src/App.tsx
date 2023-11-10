@@ -1,17 +1,22 @@
 import './App.css'
 import { useState, useEffect } from 'react';
-import CrComLib from '@crestron/ch5-crcomlib';
+import CrComLib, { bridgeReceiveBooleanFromNative, bridgeReceiveIntegerFromNative, bridgeReceiveStringFromNative, bridgeReceiveObjectFromNative, isCrestronTouchscreen } from '@crestron/ch5-crcomlib';
 import { getWebXPanel, runsInContainerApp } from '@crestron/ch5-webxpanel';
 
 // Bind CrComLib to the window object
 (window as any).CrComLib = (CrComLib as any).CrComLib;
+
+(window as any).bridgeReceiveBooleanFromNative = bridgeReceiveBooleanFromNative;
+(window as any).bridgeReceiveIntegerFromNative = bridgeReceiveIntegerFromNative;
+(window as any).bridgeReceiveStringFromNative = bridgeReceiveStringFromNative;
+(window as any).bridgeReceiveObjectFromNative = bridgeReceiveObjectFromNative;
 
 // Retrieve the XPanel and associated objects
 const { WebXPanel, isActive, WebXPanelConfigParams, WebXPanelEvents } = getWebXPanel(!runsInContainerApp());
 
 // If the project is running in a browser the XPanel should initialize
 if (isActive) {
-  WebXPanelConfigParams.host = "1.1.1.1";
+  WebXPanelConfigParams.host = "0.0.0.0";
   WebXPanelConfigParams.ipId = "0x03";
 
   console.log("Initializing XPanel with config: " + JSON.stringify(WebXPanelConfigParams));
