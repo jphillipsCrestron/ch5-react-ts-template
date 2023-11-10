@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "archive": "ch5-cli archive -p ch5-react-ts-template -d dist -o archive",
-    "upload:xpanel": "ch5-cli deploy -p -H 1.1.1.1 -t web archive/ch5-react-ts-template.ch5z",
-    "upload:panel": "ch5-cli deploy -p -H 1.1.1.1 -t touchscreen archive/ch5-react-ts-template.ch5z --slow-mode",
+    "upload:mobile": "ch5-cli deploy -p -H 0.0.0.0 -t mobile archive/ch5-react-ts-template.ch5z",
+    "upload:xpanel": "ch5-cli deploy -p -H 0.0.0.0 -t web archive/ch5-react-ts-template.ch5z",
+    "upload:panel": "ch5-cli deploy -p -H 0.0.0.0 -t touchscreen archive/ch5-react-ts-template.ch5z --slow-mode",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "postinstall": "patch-package"
