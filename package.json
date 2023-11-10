@@ -17,6 +17,7 @@
   "dependencies": {
     "@crestron/ch5-crcomlib": "^2.6.1",
     "@crestron/ch5-webxpanel": "^2.6.1",
+    "eruda": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

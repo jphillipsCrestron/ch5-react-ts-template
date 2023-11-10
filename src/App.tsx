@@ -1,7 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react';
-import CrComLib, { bridgeReceiveBooleanFromNative, bridgeReceiveIntegerFromNative, bridgeReceiveStringFromNative, bridgeReceiveObjectFromNative, isCrestronTouchscreen } from '@crestron/ch5-crcomlib';
+import CrComLib, { bridgeReceiveBooleanFromNative, bridgeReceiveIntegerFromNative, bridgeReceiveStringFromNative, bridgeReceiveObjectFromNative } from '@crestron/ch5-crcomlib';
 import { getWebXPanel, runsInContainerApp } from '@crestron/ch5-webxpanel';
+import eruda from 'eruda';
+
+// Initialize eruda for panel/app debugging capabilities
+eruda.init();
 
 // Bind CrComLib to the window object
 (window as any).CrComLib = (CrComLib as any).CrComLib;
