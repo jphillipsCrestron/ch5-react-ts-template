@@ -1,4 +1,4 @@
-import './App.css'
+import './assets/App.css'
 import { useState, useEffect } from 'react';
 import './typeExtensions'; // This is where I have CrComLib imported
 import useWebXPanel from './hooks/useWebXPanel';
