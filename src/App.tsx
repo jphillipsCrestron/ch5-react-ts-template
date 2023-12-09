@@ -1,19 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react';
-import CrComLib, { bridgeReceiveBooleanFromNative, bridgeReceiveIntegerFromNative, bridgeReceiveStringFromNative, bridgeReceiveObjectFromNative } from '@crestron/ch5-crcomlib';
+import './typeExtensions'; // This is where I have CrComLib imported
 import { getWebXPanel, runsInContainerApp } from '@crestron/ch5-webxpanel';
 import eruda from 'eruda';
 
 // Initialize eruda for panel/app debugging capabilities
 eruda.init();
-
-// Bind CrComLib to the window object
-(window as any).CrComLib = (CrComLib as any).CrComLib;
-
-(window as any).bridgeReceiveBooleanFromNative = bridgeReceiveBooleanFromNative;
-(window as any).bridgeReceiveIntegerFromNative = bridgeReceiveIntegerFromNative;
-(window as any).bridgeReceiveStringFromNative = bridgeReceiveStringFromNative;
-(window as any).bridgeReceiveObjectFromNative = bridgeReceiveObjectFromNative;
 
 // Retrieve the XPanel and associated objects
 const { WebXPanel, isActive, WebXPanelConfigParams, WebXPanelEvents } = getWebXPanel(!runsInContainerApp());
@@ -34,9 +26,9 @@ function App() {
 
   useEffect(() => {
     // Listen for digital, analog, and serial joins 1 from the control system
-    (window as any)["CrComLib"].subscribeState('b', '1', (value: boolean) => setDigitalState(value));
-    (window as any)["CrComLib"].subscribeState('n', '1', (value: number) => setAnalogState(value));
-    (window as any)["CrComLib"].subscribeState('s', '1', (value: string) => setSerialState(value));
+    window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
+    window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
+    window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
 
     // Listen for XPanel events
     window.addEventListener(WebXPanelEvents.CONNECT_WS, () => {
@@ -70,9 +62,9 @@ function App() {
   }, []);
 
   // Send digital, analog, and serial 1 joins to the control system
-  const sendDigital = (value: boolean) => (window as any)["CrComLib"].publishEvent('b', '1', value);
-  const sendAnalog = (value: number) => (window as any)["CrComLib"].publishEvent('b', '1', value);
-  const sendSerial = (value: string) => (window as any)["CrComLib"].publishEvent('b', '1', value);
+  const sendDigital = (value: boolean) => window.CrComLib.publishEvent('b', '1', value);
+  const sendAnalog = (value: number) => window.CrComLib.publishEvent('b', '1', value);
+  const sendSerial = (value: string) => window.CrComLib.publishEvent('b', '1', value);
 
   return (
     <div id="controlGroupWrapper">
