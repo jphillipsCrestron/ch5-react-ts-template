@@ -2,10 +2,13 @@ import './App.css'
 import { useState, useEffect } from 'react';
 import './typeExtensions'; // This is where I have CrComLib imported
 import useWebXPanel from './hooks/useWebXPanel';
-import eruda from 'eruda';
 
-// Initialize eruda for panel/app debugging capabilities
-eruda.init();
+// Initialize eruda for panel/app debugging capabilities (in dev mode only)
+if (import.meta.env.VITE_APP_ENV === 'development') {
+  import('eruda').then(({ default: eruda }) => {
+    eruda.init();
+  });
+}
 
 function App() {
   const [digitalState, setDigitalState] = useState(false);
