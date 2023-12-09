@@ -18,10 +18,20 @@ function App() {
   useWebXPanel("192.168.1.223", "0x04", "1");
 
   useEffect(() => {
-    // Listen for digital, analog, and serial joins 1 from the control system
-    window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
-    window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
-    window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
+    // Listen for digital, analog, and serial joins 1 from the control system.
+    // d1Id, a1Id, and s1Id are the subscription IDs for each join, they do not
+    // carry any values and are only used to unsubscribe from the join when the
+    // component unmounts
+    const d1Id = window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
+    const a1Id = window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
+    const s1Id = window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
+
+    return () => {
+      // Unsubscribe from digital, analog, and serial joins 1 when component unmounts
+      window.CrComLib.unsubscribeState('b', '1', d1Id);
+      window.CrComLib.unsubscribeState('n', '1', a1Id);
+      window.CrComLib.unsubscribeState('s', '1', s1Id);
+    }
   }, []);
 
   // Send digital, analog, and serial 1 joins to the control system
