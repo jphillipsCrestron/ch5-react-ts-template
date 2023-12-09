@@ -30,9 +30,9 @@ The entry point is where the Crestron libraries will be loaded into the applicat
 ### Receive data via joins from the control system:
 ```ts
    useEffect(() => {
-      window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
-      window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
-      window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
+      const d1Id = window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
+      const a1Id = window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
+      const s1Id = window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
 
       return () => {
          // Unsubscribe from digital, analog, and serial joins 1 when component unmounts
