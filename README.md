@@ -46,6 +46,6 @@ The entry point is where the Crestron libraries will be loaded into the applicat
 ### Send data via joins to the control system:
 ```ts
   const sendDigital = (value: boolean) => window.CrComLib.publishEvent('b', '1', value);
-  const sendAnalog = (value: number) => window.CrComLib.publishEvent('b', '1', value);
-  const sendSerial = (value: string) => window.CrComLib.publishEvent('b', '1', value);
+  const sendAnalog = (value: number) => window.CrComLib.publishEvent('n', '1', value);
+  const sendSerial = (value: string) => window.CrComLib.publishEvent('s', '1', value);
 ```
