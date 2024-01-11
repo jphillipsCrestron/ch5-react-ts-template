@@ -1,5 +1,5 @@
 import './assets/App.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './typeExtensions'; // This is where I have CrComLib imported
 import useWebXPanel from './hooks/useWebXPanel';
 
@@ -15,7 +15,14 @@ function App() {
   const [analogState, setAnalogState] = useState(0);
   const [serialState, setSerialState] = useState("");
 
-  useWebXPanel({ ipId: '0x03', host: '0.0.0.0', roomId: '', authToken: '' });
+  const webXPanelConfig = useMemo(() => ({
+    ipId: '0x03',
+    host: '0.0.0.0',
+    roomId: '',
+    authToken: ''
+  }), []); // Dependencies array is empty, so this object is created only once
+
+  useWebXPanel(webXPanelConfig);
 
   useEffect(() => {
     // Listen for digital, analog, and serial joins 1 from the control system.
