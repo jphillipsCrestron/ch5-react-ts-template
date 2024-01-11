@@ -26,7 +26,14 @@ The entry point is where the Crestron libraries will be loaded into the applicat
 
 ### Initialize the WebXPanel library if running in a browser:
 ```ts
-useWebXPanel({ ipId: '0x03', host: '0.0.0.0', roomId: '', authToken: '' });
+const webXPanelConfig = useMemo(() => ({
+   ipId: '0x03',
+   host: '0.0.0.0',
+   roomId: '',
+   authToken: ''
+}), []);
+
+useWebXPanel(webXPanelConfig);
 ```
 
 ### Receive data via joins from the control system:
