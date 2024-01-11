@@ -15,37 +15,39 @@ Run the `deploy:panel` script to upload the .ch5z to a touch panel as local proj
 
 ## Requirements
  - You must have Node.js 20.04.0 or higher and NPM 9.7.2 or higher. For more information see [System Requirements](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topics/QS-System-Requirements.htm)
- - The control system must have SSL enabled with authentication credentials created. For more information see [Control System Configuration](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topics/Platforms/X-CS-Settings.htm)
+ - The control system must have SSL and authentication enabled. For more information see [Control System Configuration](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topics/Platforms/X-CS-Settings.htm)
  - At the time of writing CH5 projects are only supported on 3 and 4-series processors (including VC-4), TST-1080, X60, and X70 panels, and the Crestron One app. For more information see [System Requirements](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topics/QS-System-Requirements.htm)
 
-## The entry point
+## Authentication
+Historically authenticating a CH5 session is handled by a redirect initiated by the WebXPanel library to the processor/server authentication service. However since CH5 2.8.0 an authentication token can be created on the processor/server instead of requiring manual user input for authentication. For processors (4-series only) this is handled via the ```websockettoken generate``` command. On VirtualControl servers the token is generated in the [web interface](https://docs.crestron.com/en-us/8912/content/topics/configuration/Web-Configuration.htm?#Tokens)
 
+## The entry point
 The entry point is where the Crestron libraries will be loaded into the application. In this demo App.tsx is treated as the entry point for the Crestron libraries.
 
 ### Initialize the WebXPanel library if running in a browser:
 ```ts
-   useWebXPanel("0.0.0.0", "0x03");
+useWebXPanel({ ipId: '0x03', host: '0.0.0.0', roomId: '', authToken: '' });
 ```
 
 ### Receive data via joins from the control system:
 ```ts
-   useEffect(() => {
-      const d1Id = window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
-      const a1Id = window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
-      const s1Id = window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
+useEffect(() => {
+   const d1Id = window.CrComLib.subscribeState('b', '1', (value: boolean) => setDigitalState(value));
+   const a1Id = window.CrComLib.subscribeState('n', '1', (value: number) => setAnalogState(value));
+   const s1Id = window.CrComLib.subscribeState('s', '1', (value: string) => setSerialState(value));
 
-      return () => {
-         // Unsubscribe from digital, analog, and serial joins 1 when component unmounts
-         window.CrComLib.unsubscribeState('b', '1', d1Id);
-         window.CrComLib.unsubscribeState('n', '1', a1Id);
-         window.CrComLib.unsubscribeState('s', '1', s1Id);
-      }
-   }, []);
+   return () => {
+      // Unsubscribe from digital, analog, and serial joins 1 when component unmounts
+      window.CrComLib.unsubscribeState('b', '1', d1Id);
+      window.CrComLib.unsubscribeState('n', '1', a1Id);
+      window.CrComLib.unsubscribeState('s', '1', s1Id);
+   }
+}, []);
 ```
 
 ### Send data via joins to the control system:
 ```ts
-  const sendDigital = (value: boolean) => window.CrComLib.publishEvent('b', '1', value);
-  const sendAnalog = (value: number) => window.CrComLib.publishEvent('n', '1', value);
-  const sendSerial = (value: string) => window.CrComLib.publishEvent('s', '1', value);
+const sendDigital = (value: boolean) => window.CrComLib.publishEvent('b', '1', value);
+const sendAnalog = (value: number) => window.CrComLib.publishEvent('n', '1', value);
+const sendSerial = (value: string) => window.CrComLib.publishEvent('s', '1', value);
 ```
