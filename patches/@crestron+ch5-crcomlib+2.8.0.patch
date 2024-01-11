@@ -1,14 +1,12 @@
 diff --git a/node_modules/@crestron/ch5-crcomlib/package.json b/node_modules/@crestron/ch5-crcomlib/package.json
-index b2b06bb..57fad16 100644
+index 15746ec..1d65a2c 100644
 --- a/node_modules/@crestron/ch5-crcomlib/package.json
 +++ b/node_modules/@crestron/ch5-crcomlib/package.json
-@@ -10,7 +10,8 @@
-         "ch5", 
+@@ -11,6 +11,7 @@
          "CrComLib"
      ], 
--    "types": "build_bundles/umd/@types/index.d.ts", 
+     "types": "build_bundles/umd/@types/index.d.ts", 
 +    "main": "build_bundles/cjs/cr-com-lib.js",
-+    "types": "build_bundles/cjs/@types/index.d.ts", 
      "scripts": {
          "build:ci:dev:amd": "cross-env NODE_ENV=dev MODULE_TYPE=amd CI=true webpack --progress --config=webpack.dev.config.js", 
          "build:ci:dev:cjs": "cross-env NODE_ENV=dev MODULE_TYPE=cjs CI=true webpack --progress --config=webpack.dev.config.js", 
