@@ -15,7 +15,7 @@ function App() {
   const [analogState, setAnalogState] = useState(0);
   const [serialState, setSerialState] = useState("");
 
-  useWebXPanel("192.168.1.223", "0x04", "1");
+  useWebXPanel({ ipId: '0x03', host: '0.0.0.0', roomId: '', authToken: '' });
 
   useEffect(() => {
     // Listen for digital, analog, and serial joins 1 from the control system.
@@ -36,8 +36,8 @@ function App() {
 
   // Send digital, analog, and serial 1 joins to the control system
   const sendDigital = (value: boolean) => window.CrComLib.publishEvent('b', '1', value);
-  const sendAnalog = (value: number) => window.CrComLib.publishEvent('b', '1', value);
-  const sendSerial = (value: string) => window.CrComLib.publishEvent('b', '1', value);
+  const sendAnalog = (value: number) => window.CrComLib.publishEvent('n', '1', value);
+  const sendSerial = (value: string) => window.CrComLib.publishEvent('s', '1', value);
 
   return (
     <div id="controlGroupWrapper">

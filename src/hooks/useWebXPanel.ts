@@ -2,7 +2,14 @@
 import { useState, useEffect } from 'react';
 import { getWebXPanel, runsInContainerApp } from '@crestron/ch5-webxpanel'
 
-const useWebXPanel = (host: string, ipId: string, roomId?: string) => {
+type WebXPanelConfig = {
+  host: string;
+  ipId: string;
+  roomId?: string;
+  authToken?: string;
+};
+
+const useWebXPanel = (params: WebXPanelConfig) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -10,7 +17,7 @@ const useWebXPanel = (host: string, ipId: string, roomId?: string) => {
   
     setIsActive(isActive);
   
-    const config: Partial<typeof WebXPanelConfigParams> = { host, ipId, roomId };
+    const config: Partial<typeof WebXPanelConfigParams> = params;
   
     if (isActive) {
       console.log("Initializing XPanel with config: " + JSON.stringify(config));
@@ -65,7 +72,7 @@ const useWebXPanel = (host: string, ipId: string, roomId?: string) => {
         window.removeEventListener(WebXPanelEvents.DISCONNECT_CIP, disconnectCipListener);
       };
     }
-  }, [host, ipId, roomId]);
+  }, [params]);
 
   return { isActive };
 };
