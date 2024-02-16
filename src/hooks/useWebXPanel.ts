@@ -13,6 +13,21 @@ const useWebXPanel = (params: WebXPanelConfig) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+
+    if(runsInContainerApp()){
+      (window as any).bridgeReceiveIntegerFromNative =
+      window.CrComLib.bridgeReceiveIntegerFromNative;
+    
+      (window as any).bridgeReceiveBooleanFromNative  =
+      window.CrComLib.bridgeReceiveBooleanFromNative ;
+    
+      (window as any).bridgeReceiveStringFromNative =
+      window.CrComLib.bridgeReceiveStringFromNative;
+    
+      (window as any).bridgeReceiveObjectFromNative  =
+      window.CrComLib.bridgeReceiveObjectFromNative ;
+    }
+    
     const { WebXPanel, isActive, WebXPanelEvents, WebXPanelConfigParams } = getWebXPanel(!runsInContainerApp());
   
     setIsActive(isActive);
