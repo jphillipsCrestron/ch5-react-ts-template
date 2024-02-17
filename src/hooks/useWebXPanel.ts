@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
-import { getWebXPanel, runsInContainerApp } from '@crestron/ch5-webxpanel'
 
 type WebXPanelConfig = {
   host: string;
@@ -13,7 +12,7 @@ const useWebXPanel = (params: WebXPanelConfig) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const { WebXPanel, isActive, WebXPanelEvents, WebXPanelConfigParams } = getWebXPanel(!runsInContainerApp());
+    const { WebXPanel, isActive, WebXPanelEvents, WebXPanelConfigParams } = window.WebXPanel.getWebXPanel(!window.WebXPanel.runsInContainerApp());
   
     setIsActive(isActive);
   
