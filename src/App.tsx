@@ -1,6 +1,5 @@
 import './assets/App.css'
 import { useState, useEffect, useMemo } from 'react';
-import './typeExtensions'; // This is where I have CrComLib imported
 import useWebXPanel from './hooks/useWebXPanel';
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
