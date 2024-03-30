@@ -36,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.19.7",
     "vite-plugin-singlefile": "^0.13.5",
     "vite-plugin-static-copy": "^1.0.1"
   }
