@@ -1,4 +1,4 @@
-import './assets/App.css'
+import './assets/css/App.css'
 import { useState, useEffect, useMemo } from 'react';
 import useWebXPanel from './hooks/useWebXPanel';
 
