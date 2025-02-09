@@ -4,8 +4,9 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd());
+// https://vite.dev/config/
+export default (config: { mode: string; }) => {
+  const env = loadEnv(config.mode, process.cwd());
   const isDevelopment = env.VITE_APP_ENV === 'development';
 
   return defineConfig({

@@ -1,7 +1,7 @@
 {
   "name": "ch5-react-ts-template",
   "private": true,
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,32 +12,33 @@
     "deploy:mobile": "ch5-cli deploy -p -H 0.0.0.0 -t mobile archive/ch5-react-ts-template.ch5z",
     "deploy:xpanel": "ch5-cli deploy -p -H 0.0.0.0 -t web archive/ch5-react-ts-template.ch5z",
     "deploy:panel": "ch5-cli deploy -p -H 0.0.0.0 -t touchscreen archive/ch5-react-ts-template.ch5z --slow-mode",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^2.9.0",
+    "@crestron/ch5-crcomlib": "^2.11.2",
     "@crestron/ch5-webxpanel": "^2.8.0",
-    "eruda": "^3.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@crestron/ch5-shell-utilities-cli": "^2.9.0",
+    "@crestron/ch5-shell-utilities-cli": "^2.11.2",
     "@crestron/ch5-utilities-cli": "^2.0.0",
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0",
-    "@vitejs/plugin-react": "^4.2.0",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vite-plugin-pwa": "^0.19.7",
-    "vite-plugin-singlefile": "^0.13.5",
-    "vite-plugin-static-copy": "^1.0.1"
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eruda": "^3.4.1",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0",
+    "vite-plugin-pwa": "^0.21.1",
+    "vite-plugin-singlefile": "^2.1.0",
+    "vite-plugin-static-copy": "^2.2.0"
   }
 }
