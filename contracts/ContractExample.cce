@@ -1,0 +1,97 @@
+{
+	"Errors": [],
+	"id": "_75toa934f",
+	"name": "ContractExample",
+	"description": "",
+	"company": "",
+	"client": "",
+	"author": "",
+	"version": "1.0.0.0",
+	"schemaVersion": 1,
+	"subContractLinks": [],
+	"subContracts": [],
+	"specifications": [
+		{
+			"Errors": [],
+			"parentId": "_75toa934f",
+			"id": "_8to979t1b",
+			"componentId": "_o3mh37scx",
+			"instanceName": "HomePage",
+			"numberOfInstances": 1
+		}
+	],
+	"components": [
+		{
+			"Errors": [],
+			"parentId": "_75toa934f",
+			"id": "_o3mh37scx",
+			"name": "HomePage",
+			"commands": [
+				{
+					"Errors": [],
+					"name": "DigitalState",
+					"siblingId": "_gtyas22m4",
+					"dataType": 1,
+					"notes": "",
+					"id": "_wo3oj1nlo",
+					"parentId": "_o3mh37scx",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "AnalogState",
+					"siblingId": "_o9mi9nv5f",
+					"dataType": 2,
+					"notes": "",
+					"id": "_eb33pqpd8",
+					"parentId": "_o3mh37scx",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "StringState",
+					"siblingId": "_ac100j0e2",
+					"dataType": 3,
+					"notes": "",
+					"id": "_x62f89age",
+					"parentId": "_o3mh37scx",
+					"attributeType": 0
+				}
+			],
+			"feedbacks": [
+				{
+					"Errors": [],
+					"name": "DigitalEvent",
+					"siblingId": "_wo3oj1nlo",
+					"dataType": 1,
+					"notes": "",
+					"id": "_gtyas22m4",
+					"parentId": "_o3mh37scx",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "AnalogEvent",
+					"siblingId": "_eb33pqpd8",
+					"dataType": 2,
+					"notes": "",
+					"id": "_o9mi9nv5f",
+					"parentId": "_o3mh37scx",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "StringEvent",
+					"siblingId": "_x62f89age",
+					"dataType": 3,
+					"notes": "",
+					"id": "_ac100j0e2",
+					"parentId": "_o3mh37scx",
+					"attributeType": 1
+				}
+			],
+			"specifications": []
+		}
+	],
+	"allComponentsForAllContracts": []
+}

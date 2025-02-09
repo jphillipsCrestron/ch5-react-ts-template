@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "build:dev": "tsc && vite build --mode development",
     "build:prod": "tsc && vite build --mode production",
-    "archive": "ch5-cli archive -p ch5-react-ts-template -d dist -o archive",
+    "archive": "ch5-cli archive -p ch5-react-ts-template -d dist -o archive -c ./contracts/output/ContractExample/interface/mapping/ContractExample.cse2j",
     "deploy:mobile": "ch5-cli deploy -p -H 0.0.0.0 -t mobile archive/ch5-react-ts-template.ch5z",
     "deploy:xpanel": "ch5-cli deploy -p -H 0.0.0.0 -t web archive/ch5-react-ts-template.ch5z",
     "deploy:panel": "ch5-cli deploy -p -H 0.0.0.0 -t touchscreen archive/ch5-react-ts-template.ch5z --slow-mode",

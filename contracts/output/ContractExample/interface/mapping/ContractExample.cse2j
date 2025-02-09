@@ -1,0 +1,46 @@
+{
+	"name": "ContractExample",
+	"timestamp": "2025-02-08 18:53:21.937",
+	"version": "1.0.0.0",
+	"schema_version": 1,
+	"extra_value": "",
+	"signals": {
+		"states": {
+			"boolean": {
+				"1": {
+					"1": "HomePage.DigitalState"
+				}
+			},
+			"numeric": {
+				"1": {
+					"1": "HomePage.AnalogState"
+				}
+			},
+			"string": {
+				"1": {
+					"1": "HomePage.StringState"
+				}
+			}
+		},
+		"events": {
+			"boolean": {
+				"HomePage.DigitalEvent": {
+					"joinId": 1,
+					"smartObjectId": 1
+				}
+			},
+			"numeric": {
+				"HomePage.AnalogEvent": {
+					"joinId": 1,
+					"smartObjectId": 1
+				}
+			},
+			"string": {
+				"HomePage.StringEvent": {
+					"joinId": 1,
+					"smartObjectId": 1
+				}
+			}
+		}
+	}
+}
