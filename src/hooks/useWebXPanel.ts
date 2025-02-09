@@ -12,11 +12,11 @@ const useWebXPanel = (params: WebXPanelConfig) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const { WebXPanel, isActive, WebXPanelEvents, WebXPanelConfigParams } = window.WebXPanel.getWebXPanel(!window.WebXPanel.runsInContainerApp());
+    const { WebXPanel, isActive, WebXPanelEvents } = window.WebXPanel.getWebXPanel(!window.WebXPanel.runsInContainerApp());
   
     setIsActive(isActive);
-  
-    const config: Partial<typeof WebXPanelConfigParams> = params;
+
+    const config: Partial<ReturnType<typeof window.WebXPanel.getWebXPanel>['WebXPanelConfigParams']> = params;
   
     if (isActive) {
       console.log("Initializing XPanel with config: " + JSON.stringify(config));
