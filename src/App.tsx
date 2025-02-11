@@ -66,7 +66,7 @@ function App() {
     <>
       {/* Joins */}
       <p style={{ color: 'white' }}>Joins</p>
-      <div id="controlGroupWrapper">
+      <div className="controlGroupWrapper">
         <div className="controlGroup">
           <button id="sendDigitalButton" className="btn" onClick={() => sendDigital(!digitalState)}>Toggle Digital</button>
           <p id="currentDigitalValue">{digitalState.toString()}</p>
@@ -81,7 +81,7 @@ function App() {
       </div>
       {/* Contracts */}
       <p style={{ color: 'white' }}>Contracts</p>
-      <div id="controlGroupWrapper">
+      <div className="controlGroupWrapper">
         <div className="controlGroup">
           <button id="sendDigitalButton" className="btn" onClick={() => sendDigitalContract(!digitalContractState)}>Toggle Digital</button>
           <p id="currentDigitalValue">{digitalContractState.toString()}</p>

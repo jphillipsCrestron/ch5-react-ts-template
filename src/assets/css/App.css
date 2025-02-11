@@ -11,7 +11,7 @@ body {
     padding: 0;
 }
 
-#controlGroupWrapper {
+.controlGroupWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
