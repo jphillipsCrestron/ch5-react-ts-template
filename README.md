@@ -29,6 +29,9 @@ A [contract](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topic
 
 A contract interface (.cse2j) file can be used at both build and run time. At build time the contract file is referenced by the CH5 `archive` script (see [package.json](package.json)), while at run time it must be placed in `/config/contract.cse2j` (named exactly) at the root level of the served files.
 
+## CH5 Web Components
+The Crestron HTML5 library (CH5, CrComLib) includes [purpose built HTML5 tags](https://sdkcon78221.crestron.com/sdk/Crestron_HTML5UI/Content/Topics/UI-QS-Common-Attribute-Property.htm) (web components) that can be included in HTML markup. These web components include things like `ch5-button` and `ch5-dpad`. In an HTML5 project that uses a standard framework such as React these components are not generally necessary and aren't as flexible as JSX. However, there are some components that cannot be reproduced in React such as the `ch5-video` for displaying RTSP streams on Crestron touchpanels and the Crestron One app. For that reason this project does support the use of CH5 components. The [globals.d.ts](/src/globals.d.ts) file contains bindings to map the CH5 web components to the JSX interface so they can be used without error and maintain type safety.
+
 ## Progressive Web App (PWA)
 Progressive web apps are HTML5 apps that can be "installed" on devices from browsers onto PC/Mac/iOS/Android devices. Browsers require strict security to perform this - so the server must serve the project via HTTPS and the server certificate must be signed by a CA that is trusted by the client device. See the wiki for this demo which details [how to create a certificate chain](https://github.com/jphillipsCrestron/ch5-react-ts-template/wiki/Creating-a-certificate-chain-(for-PWA)). PWA's are defined via a manifest JSON file which describes the PWA, and a service worker js file that is responsible for caching files for later retrieval in the event that the device loses network connectivity to the server so the user will still see the project.
 
@@ -82,4 +85,26 @@ const sendSerial = (value: string) => window.CrComLib.publishEvent('s', '1', val
 const sendDigitalContract = (value: boolean) => window.CrComLib.publishEvent('b', 'HomePage.DigitalEvent', value);
 const sendAnalogContract = (value: number) => window.CrComLib.publishEvent('n', 'HomePage.AnalogEvent', value);
 const sendSerialContract = (value: string) => window.CrComLib.publishEvent('s', 'HomePage.StringEvent', value);
+```
+
+### Using CH5 components
+```tsx
+// Import a CH5 theme (coming from the @crestron/ch5-theme package) for CH5 CSS (required when a CH5 component is in use)
+// If not using a CH5 component in the project then do not import the CSS as that adds ~2mb to the bundle size.
+import '@crestron/ch5-theme/output/themes/light-theme.css'
+
+function App() {
+   return (
+      <div>
+         <p>I'm regular JSX!</p>
+         <ch5-button type="info" label="I'm a CH5 button!"></ch5-button>
+         <ch5-video 
+            url="rtsp://0.0.0.0:554" 
+            userId='username' 
+            password='password' 
+            size="regular">
+         </ch5-video>
+      <div/>
+   )
+}
 ```

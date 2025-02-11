@@ -1,4 +1,6 @@
-import './assets/css/App.css'
+// Uncomment the below line if you are using CH5 components.
+// import '@crestron/ch5-theme/output/themes/light-theme.css' // Crestron CSS. @crestron/ch5-theme/output/themes shows the other themes that can be used.
+import './assets/css/App.css' // Your CSS
 import { useState, useEffect, useMemo } from 'react';
 import useWebXPanel from './hooks/useWebXPanel';
 
@@ -66,7 +68,7 @@ function App() {
     <>
       {/* Joins */}
       <p style={{ color: 'white' }}>Joins</p>
-      <div id="controlGroupWrapper">
+      <div className="controlGroupWrapper">
         <div className="controlGroup">
           <button id="sendDigitalButton" className="btn" onClick={() => sendDigital(!digitalState)}>Toggle Digital</button>
           <p id="currentDigitalValue">{digitalState.toString()}</p>
@@ -81,7 +83,7 @@ function App() {
       </div>
       {/* Contracts */}
       <p style={{ color: 'white' }}>Contracts</p>
-      <div id="controlGroupWrapper">
+      <div className="controlGroupWrapper">
         <div className="controlGroup">
           <button id="sendDigitalButton" className="btn" onClick={() => sendDigitalContract(!digitalContractState)}>Toggle Digital</button>
           <p id="currentDigitalValue">{digitalContractState.toString()}</p>

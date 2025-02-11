@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@crestron/ch5-crcomlib": "^2.11.2",
+    "@crestron/ch5-theme": "^2.11.2",
     "@crestron/ch5-webxpanel": "^2.8.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
